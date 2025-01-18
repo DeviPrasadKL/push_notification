@@ -6,13 +6,13 @@ const cors = require("cors")
 const port = 3000;
 
 const apiKeys = {
-    publicKey: "YOUR_PUBLIC_KEY",
-    privateKey: "YOUR_PRIVATE_KEY"
+    publicKey: "BCgsXAmj9oVn4oIlr531ZA0ZZwHXLQwlydph5yX6DtM0tHd5R1ONdxPR8gOC04TEWs6k71y7Y5kxoqE9huWI2Ig",
+    privateKey: "pLI7CUXBtImkzqM7SdvJixdOkIsZ_MBFovNLAe_Y6Q0"
 }
 
 webpush.setVapidDetails(
-    'mailto:YOUR_MAILTO_STRING',
-    apiKeys.publicKey,
+    'mailto:t29611420@gmail.com',
+     apiKeys.publicKey,
     apiKeys.privateKey
 )
 

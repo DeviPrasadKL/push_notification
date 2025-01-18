@@ -24,15 +24,19 @@ const saveSubscription = async (subscription) => {
     return response.json()
 }
 
-self.addEventListener("activate", async (e) => {
-    const subscription = await self.registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array("YOUR_PUBLIC_KEY")
-    })
-
-    const response = await saveSubscription(subscription)
-    console.log(response)
-})
+self.addEventListener('activate', async (e) => {
+    e.waitUntil(
+        self.registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array("BCgsXAmj9oVn4oIlr531ZA0ZZwHXLQwlydph5yX6DtM0tHd5R1ONdxPR8gOC04TEWs6k71y7Y5kxoqE9huWI2Ig")
+        }).then(async (subscription) => {
+            const response = await saveSubscription(subscription);
+            console.log('Subscription saved:', response);
+        }).catch((err) => {
+            console.error('Push subscription failed:', err);
+        })
+    );
+});
 
 self.addEventListener("push", e => {
     self.registration.showNotification("Wohoo!!", { body: e.data.text() })
